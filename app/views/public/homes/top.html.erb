@@ -1,22 +1,24 @@
-<section ="first-contact">
-<div class="container">
-  <div class="row">
-      <div class="col-lg-5">
-          <h4>うちの秋田犬。へようこそ！</h4>
+<section class="first-contact">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-4 mt-5">
+              <h4><%= image_tag '7963E19E-5230-4CA3-9BFD-BF5F4367FF22_4_5005_c.jpeg', size: "80x60" %>へようこそ！</h4>
+          </div>
       </div>
-  </div>
-  <div class="row">
-      <div class="col-md-3">
-          <%= link_to "新規登録",new_customer_registration_path,class:"btn btn-success" %>
+      <div class="row">
+          <div class="col-md-4 mt-3">
+              <%= link_to "新規登録",new_customer_registration_path,class:"btn btn-success w-50" %>
+          </div>
       </div>
-  </div>
-  <div class="row">
-      <div class="col-md-3">
-          <%= link_to "ログイン",new_customer_session_path,class:"btn btn-primary" %>
+      <div class="row">
+          <div class="col-md-4 mt-3">
+              <%= link_to "ログイン",new_customer_session_path,class:"btn btn-primary w-50" %>
+          </div>
       </div>
-      <div class="col-md-3">
-          <%= link_to "ゲストログイン（閲覧用）",customers_guest_sign_in_path,class:"btn btn-secondary", method: :post %>
+      <div class="row">
+          <div class="col-md-4 mt-3">
+              <%= link_to "ゲストログイン",customers_guest_sign_in_path,class:"btn btn-secondary w-50", method: :post %>
+          </div>
       </div>
-  </div>
-</div>
+    </div>
 </section>

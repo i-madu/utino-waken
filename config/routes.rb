@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   }
   
   #ゲスト用
-  devise_scope :customers do
-    post "customers/guest_sign_in", to:"customers/sessions#guest_sign_in"
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "customers/sessions#guest_sign_in"
   end
   
   

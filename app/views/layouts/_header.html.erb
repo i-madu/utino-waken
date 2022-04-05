@@ -2,7 +2,7 @@
   <header class="shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="/"><span class="logo">うちの秋田犬。</span></a>
+        <a class="navbar-brand" href="/"><span class="logo"><%= image_tag '7963E19E-5230-4CA3-9BFD-BF5F4367FF22_4_5005_c.jpeg', size: "80x60" %></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +22,7 @@
       </div>
     </nav>
   </header>
-          
+
 <!--管理者ヘッダー-->
 <% elsif admin_signed_in? %>
 <header class="shadow-sm">
@@ -52,7 +52,7 @@
 <% else %>
   <header class="shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">   
+      <div class="container">
         <a class="navbar-brand" href="/"><span class="logo">うちの秋田犬。</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
