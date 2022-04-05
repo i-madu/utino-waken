@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row mx-auto">
+      <h3 class="col-md-4 my-3 offset-md-4">新規会員登録</h3>
+  </div>
+
+  <div class="row mt-3 mx-auto">
+    <div class="col-md-8 mt-3 offset-md-3">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        <table>
+        <div class="field">
+          <tr>
+            <th><%= f.label :name,"氏名"  %></th>
+            <th><%= f.text_field :name, autofocus: true, autocomplete: "name", :placeholder => "秋田わん子" %></th>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+          <th><%= f.label :email,"メールアドレス" %></th>
+          <th><%= f.email_field :email, autocomplete: "email", :placeholder => "xxxxxx@email.com" %></th>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+          <th><%= f.label :login_name,"ログイン名" %></th>
+          <th><%= f.email_field :email, autocomplete: "login_name", :placeholder => "ニックネーム" %></th>
+          </tr>
+        </div>
+        <div class="field">
+          <tr>
+          <th><%= f.label :password,"パスワード" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em></th>
+          <% end %>
+          <th><%= f.password_field :password, autocomplete: "new-password" %></th>
+          </tr>
+        </div>
+
+        <div class="field">
+          <tr>
+          <th><%= f.label :password_confirmation,"パスワード（確認用）" %></th>
+          <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %></th>
+          </tr>
+        </div>
+        </table>
+        <div class="actions mt-4">
+          <%= f.submit "新規登録",class:"btn btn-success offset-md-3" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row  offset-md-3 mt-5">
+      <h5>新規会員登録がお済みの方</h5>
+  </div>
+  <div class="row  offset-md-3">
+      <p>新規会員登録がお済みの方は<%= render "public/shared/links" %>からログインをしてください。</p>
+  </div>
+</div>
