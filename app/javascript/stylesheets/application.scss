@@ -8,3 +8,15 @@
   background-size: cover;
   background-position: center;
 }
+
+.post-image {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.post-image-show {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}

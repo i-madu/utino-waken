@@ -1,2 +1,27 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-2 my-5">
+      <h5>投稿編集画面</h5>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-10 offset-2">
+
+          <%= form_with model: @post, local:true do |f| %>
+          <div class="from-group">
+            <%= f.label :image, "投稿画像",class:"col-md-2" %>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          <div class="from-group mt-3 mb-4">
+            <%= f.label :post,"投稿コメント",class:"align-top col-md-2" %>
+            <%= f.text_area :post, placeholder:"投稿したいコメントを入力してください。",size:"35x10" %>
+          </div>
+          <div class="from-group offset-3">
+            <%= f.submit "変更",class:"btn btn-info col-md-3" %>
+          </div>
+
+
+          <% end %>
+      </div>
+  </div>
+</div>
