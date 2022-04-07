@@ -3,9 +3,10 @@ class Public::PostsController < ApplicationController
   before_action :direct_type, only: [:edit]
 
   def index
+    @customer = current_customer
     @posts = Post.all.order(created_at: :desc)
   end
-  
+
   def show
     @post = Post.find(params[:id])
   end
@@ -21,15 +22,24 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "新規投稿が完了しました！"
       redirect_to posts_path
     else
-      flash[:alert] = "投稿内容を入力してください。"
+      flash.now[:alert] = "投稿内容を入力してください。"
       render "new"
     end
   end
 
   def edit
+    
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "投稿の更新が完了しました！"
+      redirect_to post_path(@post)
+    else
+      flash.now[:alert] = "更新内容が空のままです。"
+      render "new"
+    end
   end
 
   def destroy

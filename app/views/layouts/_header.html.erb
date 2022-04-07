@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to 'マイページ', my_posts_path(current_customer.id), class: 'nav-link text-dark' %>
+              <%= link_to 'マイページ', customer_path(current_customer.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to 'みんなの投稿', posts_path, class: 'nav-link text-dark' %>

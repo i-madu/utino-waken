@@ -1,0 +1,11 @@
+<strong class="d-inline">
+  <% if post.favorited_by?(current_customer) %>
+    <%= link_to post_favorites_path(post), method: :delete do %>
+      ♥<%= post.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to post_favorites_path(post), method: :post do %>
+      ♡<%= post.favorites.count %>
+    <% end %>
+</strong>
+  <% end %>

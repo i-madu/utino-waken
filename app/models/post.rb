@@ -7,6 +7,11 @@ class Post < ApplicationRecord
   
   validates :post, presence: true, length: { maximum: 200 }
   
+  #いいね機能
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
+  
   
   
 end
