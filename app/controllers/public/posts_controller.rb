@@ -9,6 +9,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -60,7 +61,6 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:post,:post_image)
   end
-
 
 
 end

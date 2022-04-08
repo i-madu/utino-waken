@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :customers,only:[:show,:edit,:update]
 
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
-      resources :comments, only:[:index, :edit, :update, :destroy]
+      resource :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
     end
   end
