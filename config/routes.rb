@@ -17,10 +17,12 @@ Rails.application.routes.draw do
     root "homes#top"
     patch "customers/withdraw" => "customers#withdraw",as:"withdraw_customer"
     put "customers/withdraw" => "customers#withdraw"
-    resources :customers,only:[:show,:edit,:update]
+    resources :customers, only:[:show,:edit,:update] do
+      resources :relationships, only:[:create, :destroy]
+    end
 
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
-      resource :comments, only:[:create, :destroy]
+      resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
     end
   end
@@ -31,9 +33,9 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    resources :customers,only:[:index, :show, :edit, :update]
-    resources :posts,only:[:index, :show, :destroy] do
-      resources :comments,only:[:index, :destroy]
+    resources :customers, only:[:index, :show, :edit, :update]
+    resources :posts, only:[:index, :show, :destroy] do
+      resources :comments, only:[:index, :destroy]
     end
   end
 

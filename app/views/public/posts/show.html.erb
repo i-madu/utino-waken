@@ -22,31 +22,37 @@
     </div>
 
     <!--コメント-->
-    <div class="col-md-3 card overflow-scroll mt-5 mr-1">
-      <% @post.comments.each do |post| %>
-      <div class="card-header">
-        <p class="d-inline">image</p>
-        <p class="d-inline"><%= post.login_name %></p>
-      </div>
-      <div class="card-body">
-        <div class="card-text"><%= post.comment %></div>
-      </div>
-      <div class="card-footer">
-        <% if post.customer.id == current_customer.id %>
-          <%= link_to "削除する",post_comments_path, method: :delete,  class:"card-text d-inline" %>
-        <% end %>
-        <p class="card-text d-inline"><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>
-      </div>
-      <% end %>
-
+    <div class="col-md-3 mt-5 mr-1">
       <div class="row">
         <div class="col-12 ">
         <%= form_with model:[@post, @comment], local: true do |f| %>
-          <%= f.text_area :comment, placeholder: "気になった投稿にコメントしてみましょう!" %><br>
+          <%= f.text_area :comment, placeholder: "気になった投稿にコメントしてみましょう!",size:"25x5" %><br>
           <%= f.submit "投稿" %>
         </div>
         <% end %>
       </div>
+
+
+      <div class="row sidebox">
+      <% @post.comments.each do |comment| %>
+        <div class="col-md-12 card" data-spy="affix">
+          <div class="card-header">
+            <p class="d-inline">image</p>
+            <p class="d-inline"><%= comment.customer.login_name %></p>
+          </div>
+          <div class="card-body">
+            <div class="card-text"><%= comment.comment %></div>
+          </div>
+          <div class="card-footer">
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除する",post_comment_path(@post, comment), method: :delete, class:"card-text d-inline" %>
+            <% end %>
+            <p class="card-text d-inline"><small class="text-muted"><%= comment.created_at.strftime("%Y/%m/%d") %></small></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
 
 
     </div>
