@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// @import '~@fortawesome/fontawesome-free/css/all';
 
 .first-contact {
   width: 100%;
@@ -23,4 +23,8 @@
 
 .field_with_errors {
   display: contents;
+}
+
+.profile_bar {
+  height: 700px;
 }

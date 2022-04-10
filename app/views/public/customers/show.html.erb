@@ -1,16 +1,43 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-3 shadow-sm mt-5">
-        <p>プロフィール画像</p>
-        <p><%= @customer.login_name %></p>
-        <p>自己紹介文</p>
-        <p>フォロー</p>
-        <p>フォロワー</p>
-        <p><%= link_to "プロフィール編集",edit_customer_path %></p>
-
-
-
-        <%= link_to "新規投稿する",new_post_path %>
+      <div class="col-md-3 card shadow-sm mt-5 profile_bar">
+        <%= image_tag @customer.get_profile_image(100,100), class:"card-img-top" %>
+        <div class="card-body">
+          <h6 class="card-title"><%= @customer.login_name %></h6>
+          <p class="card-text"><%= @customer.introduction %></p>
+        </div>
+        <table class="table">
+        <% unless current_customer == @customer %>
+          <% if current_customer.followings?(customer) %>
+            <th><%= link_to "フォロー中", customer_relationships_path(customer), method: :delete %></th>
+          <% else %>
+            <th><% link_to "フォローする", customer_relationships_path(customer), method: :post %></th>
+          <% end %>
+        <% else %>
+        <tr>
+          <th>フォロー数：</th>
+          <th><%= link_to customer_followings_path(current_customer) do %>
+            <%= @customer.followings.count %>
+          </th>
+          <% end %>
+        </tr>
+        <tr>
+          <th>フォロワー数：</th>
+          <th><%= link_to customer_followers_path(current_customer) do %>
+            <%= @customer.followers.count %>
+          </th>
+          <% end %>
+        </tr>
+        <% end %>
+        <tr>
+          <th><%= link_to "プロフィール編集",edit_customer_path %></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th><%= link_to "新規投稿する",new_post_path %></th>
+          <th></th>
+        </tr>
+        </table>
       </div>
 
 
@@ -31,7 +58,7 @@
               </div>
               <div class="card-footer">
                 <%= render "layouts/favorite", post: post  %>
-                
+
                 <p class="card-text d-inline"><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>
               </div>
               <% end %>
@@ -43,11 +70,11 @@
       </div>
 
       <div class="col-md-1">
-        <%= link_to new_post_path do%>
-          <i class="fas fa-pencil"></i>
-
+        <%= link_to new_post_path do %>
+          <i class="fas fa-pen-fancy"></i>
+        <% end %>
       </div>
-      <% end %>
+
 
 
   </div>
