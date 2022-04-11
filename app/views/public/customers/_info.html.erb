@@ -1,0 +1,41 @@
+<div class="col-md-2 card shadow-sm mt-5 profile_bar">
+  <%= image_tag customer.get_profile_image(100,100), class:"card-img-top img-fluid" %>
+  <div class="card-body">
+    <h6 class="card-title"><%= customer.login_name %></h6>
+    <p class="card-text"><%= customer.introduction %></p>
+  </div>
+  <table class="table">
+    <% unless current_customer.id == customer.id %>
+      <% if current_customer.followings?(customer) %>
+      <tr>
+        <th><%= link_to "フォロー中", customer_relationships_path(customer), method: :delete %></th>
+      <% else %>
+        <th><%= link_to "フォローする", customer_relationships_path(customer), method: :post %></th>
+      <% end %>
+      </tr>
+    <% else %>
+    <tr>
+      <th>フォロー：</th>
+      <th><%= link_to customer_followings_path(current_customer) do %>
+        <%= customer.followings.count %>
+      </th>
+      <% end %>
+    </tr>
+    <tr>
+      <th>フォロワー：</th>
+      <th><%= link_to customer_followers_path(current_customer) do %>
+        <%= customer.followers.count %>
+      </th>
+      <% end %>
+    </tr>
+    <% end %>
+    <tr>
+      <th><%= link_to "プロフィール",edit_customer_path(customer) %></th>
+      <th></th>
+    </tr>
+    <tr>
+      <th><%= link_to "新規投稿",new_post_path %></th>
+      <th></th>
+    </tr>
+  </table>
+</div>

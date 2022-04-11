@@ -5,10 +5,12 @@ class Public::PostsController < ApplicationController
   def index
     @customer = current_customer
     @posts = Post.all.order(created_at: :desc)
+    @tag_list = Tag.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @customer = Customer.find(params[:id])
     @comment = Comment.new
   end
 
@@ -19,11 +21,13 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
+    tag_list = params[:post][:name].split(',')
     if @post.save
+      @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました！"
       redirect_to posts_path
     else
-      flash.now[:alert] = "投稿内容を入力してください。"
+      flash.now[:alert] = "投稿内容が空欄のままか、文字数を超過しました。"
       render "new"
     end
   end

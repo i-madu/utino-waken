@@ -28,7 +28,7 @@ class Customer < ApplicationRecord
 
   #フォローしているか判定
   def followings?(customer)
-    followings.includes?(customer)
+    followings.include?(customer)
   end
 
 

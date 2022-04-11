@@ -10,9 +10,9 @@
 }
 
 .post-image {
-  // // width: 250px;
-  // // height: 300px;
-  // object-fit: cover;
+  // width: 325px;
+  height: 300px;
+  object-fit: cover;
 }
 
 .post-image-show {
@@ -20,6 +20,11 @@
   // height: 700px;
   // object-fit: cover;
 }
+
+.post-index {
+  height: 100px;
+}
+
 
 .field_with_errors {
   display: contents;
