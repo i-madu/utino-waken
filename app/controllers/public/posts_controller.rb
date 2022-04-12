@@ -10,8 +10,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @customer = Customer.find(params[:id])
+    @customer = @post.customer
     @comment = Comment.new
+    @post_tags = @post.tags
   end
 
   def new
@@ -21,7 +22,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    tag_list = params[:post][:name].split(',')
+    tag_list = params[:post][:name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました！"

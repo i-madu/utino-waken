@@ -5,7 +5,7 @@
   <div class="row">
       <div class="col-md-10 offset-2">
 
-          <%= form_with model: @post, local:true do |f| %>
+          <%= form_with model: @post , local:true do |f| %>
           <div class="from-group">
             <%= f.label :post_image, "投稿画像",class:"col-md-2" %>
             <%= f.file_field :post_image, accept: "image/*" %>
@@ -13,6 +13,10 @@
           <div class="from-group mt-3 mb-4">
             <%= f.label :post,"投稿コメント",class:"align-top col-md-2" %>
             <%= f.text_area :post, placeholder:"コメントは300字まで投稿できます。",size:"35x10" %>
+          </div>
+          <div class="from-group">
+            <%= f.label :name, "タグ" %>
+            <%= f.text_field :name %>
           </div>
           <div class="from-group offset-md-5 offset-sm-3 offset-lg-3">
             <%= f.submit "投稿",class:"btn btn-info col-md-2 col-sm-3 col-lg-3" %>

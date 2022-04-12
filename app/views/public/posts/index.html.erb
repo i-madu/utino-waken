@@ -20,6 +20,10 @@
             <% end %>
               <div class="card-body">
                 <p class="card-text overflow-hidden post-index"><%= post.post %></p>
+
+                <!--タグ表示-->
+                <p class="card-text overflow-hidden post-index"><i class="fas fa-tag"></i><%= post.tags.map(&:name).join(' ') %></p>
+
               </div>
               <div class="card-footer">
                 <p id="favorite"><%= render "public/favorites/favorite", post: post  %></p>
