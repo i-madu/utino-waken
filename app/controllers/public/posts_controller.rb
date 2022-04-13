@@ -34,12 +34,15 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:name].split(nil)
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       flash[:notice] = "投稿の更新が完了しました！"
       redirect_to post_path(@post)
     else

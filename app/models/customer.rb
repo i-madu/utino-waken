@@ -48,5 +48,7 @@ class Customer < ApplicationRecord
       customer.name = "guestcustomer"
     end
   end
+  
+  scope :by_name, -> (word){ where("login_name LIKE ?","%#{word}%")}
 
 end

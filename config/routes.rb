@@ -15,18 +15,21 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root "homes#top"
-    patch "customers/withdraw" => "customers#withdraw",as:"withdraw_customer"
-    put "customers/withdraw" => "customers#withdraw"
+    patch "customers/withdraw", to: "customers#withdraw",as:"withdraw_customer"
+    put "customers/withdraw", to:  "customers#withdraw"
     resources :customers, only:[:show,:edit,:update] do
       resource :relationships, only:[:create, :destroy]
-      get "followings" => "relationships#followings", as: "followings"
-      get "followers" => "relationships#followers", as: "followers"
+      get "followings", to: "relationships#followings", as: "followings"
+      get "followers", to: "relationships#followers", as: "followers"
     end
 
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
+      get "search"
     end
+    
+    
   end
 
   # 管理者用

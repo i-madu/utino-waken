@@ -1,0 +1,3 @@
+<%= form_with model: search,search_path, method: :get, scope: :q, local: true do |f| %>
+  <%= f.search_field (:word) %>
+<%= end %>
