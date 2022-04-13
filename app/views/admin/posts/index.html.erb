@@ -1,11 +1,8 @@
 <div class="container">
-  <div class="row">
+  <div class="row mx-auto">
 
-
-
-        <div class="row">
           <% @posts.each do |post| %>
-            <div class="card shadow-sm m-3 mt-5 col-md-3 mx-auto">
+            <div class="card shadow-sm m-3 mt-5 col-md-3">
               <div class="card-header float-end">
                 <%= link_to admin_customer_path(post) do %>
                   <p class="d-inline">image</p>

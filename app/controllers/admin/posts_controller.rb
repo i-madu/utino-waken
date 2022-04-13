@@ -1,6 +1,7 @@
 class Admin::PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @customer = Customer.find(params[:id])
+    @posts = @customer.posts
     @tag_list = Tag.all
   end
 

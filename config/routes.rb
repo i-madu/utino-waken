@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]
-    resources :posts, only:[:index, :show, :destroy] do
+    get "posts/:id", to: "posts#index", as: "posts"
+    resources :posts, only:[:show, :destroy] do
       resources :comments, only:[:index, :destroy]
     end
   end

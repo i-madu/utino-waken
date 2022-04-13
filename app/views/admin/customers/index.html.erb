@@ -14,12 +14,16 @@
       <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.id %></td>
-
-        <%= link_to admin_customer_path(customer) do %>
-          <td><%= customer.name %></td>
-        <% end %>
-
-
+        <td>
+          <%= link_to admin_customer_path(customer) do %>
+            <%= customer.name %>
+          <% end %>
+          </td>
+        <td>
+          <%= link_to admin_posts_path(customer) do %>
+            <%= customer.login_name %>
+          <% end %>
+        </td>
         <td><%= customer.login_name %></td>
         <td>ステータス</td>
       </tr>
