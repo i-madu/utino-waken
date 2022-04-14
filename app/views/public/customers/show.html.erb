@@ -8,7 +8,7 @@
           <% @posts.each do |post| %>
             <div class="card shadow-sm m-3 mt-5 col-md-5">
               <div class="card-header float-end">
-                <p class="d-inline">image</p>
+                <%= image_tag post.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
                 <p class="d-inline"><%= post.customer.login_name %></p>
               </div>
             <% if post.post_image.attached? %>
@@ -29,12 +29,6 @@
           <% end %>
 
         </div>
-      </div>
-
-      <div class="col-md-1">
-        <%= link_to new_post_path do %>
-          <i class="fas fa-pen-fancy"></i>
-        <% end %>
       </div>
 
 

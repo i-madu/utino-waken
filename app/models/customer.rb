@@ -49,6 +49,12 @@ class Customer < ApplicationRecord
     end
   end
   
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+  
   scope :by_name, -> (word){ where("login_name LIKE ?","%#{word}%")}
 
 end

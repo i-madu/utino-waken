@@ -15,21 +15,20 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root "homes#top"
-    patch "customers/withdraw", to: "customers#withdraw",as:"withdraw_customer"
-    put "customers/withdraw", to:  "customers#withdraw"
     resources :customers, only:[:show,:edit,:update] do
       resource :relationships, only:[:create, :destroy]
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
     end
-
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
-      get "search"
     end
-    
-    
+    #退会確認用
+    get "customer/:id/unsubscribe", to: "customers#unsubscribe", as:"unsubscribe"
+    #退会削除用
+    patch "customer/:id/withdrawal", to: "customers#withdrawal", as:"withdrawal"
+
   end
 
   # 管理者用
@@ -38,11 +37,12 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    resources :customers, only:[:index, :show, :edit, :update]
-    get "posts/:id", to: "posts#index", as: "posts"
-    resources :posts, only:[:show, :destroy] do
-      resources :comments, only:[:index, :destroy]
+    resources :customers, only:[:index, :show, :edit, :update] do
+      resources :posts, only:[:index, :show, :destroy] do
+        resources :comments, only:[:index, :destroy]
+      end
     end
+    # get "posts/:id", to: "posts#index", as: "posts"
   end
 
 

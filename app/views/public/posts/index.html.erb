@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
       <%= render "public/customers/info", customer: @customer %>
-
       <div class="col-md-10">
         <div class="row">
           <% @posts.each do |post| %>
             <div class="card shadow-sm m-3 mt-5 col-md-5">
               <div class="card-header float-end">
-                <%= link_to customer_path(post) do %>
-                  <p class="d-inline">image</p>
+                <%= link_to customer_path(post) ,class:'customer_link' do %>
+                  <%= image_tag post.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
                 <% end %>
                 <%= link_to customer_path(post) do %>
                   <p class="d-inline"><%= post.customer.login_name %></p>
@@ -26,7 +25,7 @@
 
               </div>
               <div class="card-footer">
-                <p id="favorite"><%= render "public/favorites/favorite", post: post  %></p>
+                <p class="favorite_<%= post.id %>"><%= render "public/favorites/favorite", post: post  %></p>
                 <p class="card-text d-inline"><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>
               </div>
               <% end %>
