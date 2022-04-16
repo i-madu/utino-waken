@@ -7,14 +7,14 @@
               <%= image_tag post.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
             <% end %>
             <%= link_to admin_customer_path(post.customer) do %>
-              <p class="d-inline"><%#= post.customer.login_name %></p>
+              <p class="d-inline"><%= post.customer.login_name %></p>
             <% end %>
           </div>
-          <%# if post.post_image.attached? %>
-          　<%#= link_to admin_customer_post_path(post) do %>
-              <%#= image_tag post.post_image, class:"card-img-top post-image img-fluid" %>
-            <%# end %>
-          <%# end %>
+          <% if post.post_image.attached? %>
+          　<%= link_to admin_customer_post_path(post.customer, post.id) do %>
+              <%= image_tag post.post_image, class:"card-img-top post-image img-fluid" %>
+            <% end %>
+          <% end %>
           <div class="card-body">
             <p class="card-text overflow-hidden post-index"><%= post.post %></p>
             <!--タグ表示-->

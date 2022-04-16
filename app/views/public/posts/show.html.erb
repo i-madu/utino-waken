@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <div class="card-footer">
-        <p id="favorite-show"><%= render "public/favorites/favorite", post: @post  %></p>
+        <p class="d-inline favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post  %></p>
         <p class="card-text d-inline"><small class="text-muted"><%= @post.created_at.strftime("%Y/%m/%d") %></small></p>
         <% if current_customer == @post.customer %>
           <%= link_to "編集",edit_post_path, class:"d-inline" %>
@@ -26,7 +26,13 @@
     </div>
 
     <!--コメント-->
-    <%= render "public/comments/comment", post: @post, comment: @comment %>
-
+    <div class="col-md-2 mt-5">
+      <div class="row comments">
+        <%= render "public/comments/comment_form", post: @post, comment: @comment %>
+      </div>
+      <div class="row" id="comment-list">
+        <%= render "public/comments/comment", post: @post %>
+      </div>
+    </div>
   </div>
 </div>

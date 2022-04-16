@@ -5,29 +5,24 @@
     <p class="card-text"><%= customer.introduction %></p>
   </div>
   <table class="table">
-    <% unless current_customer.id == customer.id %>
-      <% if current_customer.followings?(customer) %>
+    <tr class="follow_<%= customer.id %>">
+      <%= render "public/relationships/follow", customer: customer %>
+    </tr>
+    <% if current_customer.id == customer.id %>
       <tr>
-        <th><%= link_to "フォロー中", customer_relationships_path(customer), method: :delete %></th>
-      <% else %>
-        <th><%= link_to "フォローする", customer_relationships_path(customer), method: :post %></th>
-      <% end %>
+        <th>フォロー：</th>
+        <th><%= link_to customer_followings_path(current_customer) do %>
+          <%= customer.followings.count %>
+        </th>
+        <% end %>
       </tr>
-    <% else %>
-    <tr>
-      <th>フォロー：</th>
-      <th><%= link_to customer_followings_path(current_customer) do %>
-        <%= customer.followings.count %>
-      </th>
-      <% end %>
-    </tr>
-    <tr>
-      <th>フォロワー：</th>
-      <th><%= link_to customer_followers_path(current_customer) do %>
-        <%= customer.followers.count %>
-      </th>
-      <% end %>
-    </tr>
+      <tr>
+        <th>フォロワー：</th>
+        <th><%= link_to customer_followers_path(current_customer) do %>
+          <%= customer.followers.count %>
+        </th>
+        <% end %>
+      </tr>
     <% end %>
     <tr>
       <th><%= link_to "プロフィール",edit_customer_path(customer) %></th>
@@ -38,7 +33,10 @@
       <th></th>
     </tr>
     <tr>
+      <% if current_customer == customer %>
       <th><%= link_to "退会について", unsubscribe_path(customer) %></th>
+      <th></th>
+      <% end %>
     </tr>
   </table>
 </div>

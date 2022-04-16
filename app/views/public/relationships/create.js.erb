@@ -1,0 +1,2 @@
+console.log(".follow_<%= @customer.id %>","<%= j(render "public/relationships/follow", customer: @customer) %>");
+$(".follow_<%= @customer.id %>").html("<%= j(render "public/relationships/follow", customer: @customer) %>");
