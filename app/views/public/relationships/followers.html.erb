@@ -6,11 +6,7 @@
       <tr>
         <th><%= image_tag customer.get_profile_image(50,50) %></th>
         <th><%= link_to customer.login_name, customer_path(customer) %></th>
-        <% if current_customer.followings?(customer) %>
-          <th><%= link_to "フォロー中", customer_relationships_path(customer), method: :delete %></th>
-        <% else %>
-          <th><%= link_to "フォローする", customer_relationships_path(customer), method: :post %></th>
-      <% end %>
+        <th class="follow_<%= @customer.id %>"><%= render "public/relationships/follow", customer: @customer %></th>
       </tr>
       <% end %>
     </table>

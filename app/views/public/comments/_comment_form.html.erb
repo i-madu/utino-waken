@@ -1,5 +1,5 @@
 <!--コメントフォーム-->
 <%= form_with model:[post, comment], local: false do |f| %>
-  <%= f.text_area :comment, placeholder: "コメントは150字まで可能です。", class:"col-12",size:"20x7" %><br>
+  <%= f.text_area :comment, placeholder: "コメントは150字まで可能です。", class:"col-12",size:"40x7" %><br>
   <%= f.submit "投稿", class:"btn btn-info col-12" %>
 <% end %>

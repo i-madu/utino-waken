@@ -1,4 +1,4 @@
-<div class="col-md-3 card shadow-sm mt-5 profile_bar">
+<div class="card shadow-sm mt-5 profile_bar">
   <%= image_tag customer.get_profile_image(100,100), class:"card-img-top img-fluid" %>
   <div class="card-body">
     <h6 class="card-title"><%= customer.login_name %></h6>
@@ -6,7 +6,9 @@
   </div>
   <table class="table">
     <tr class="follow_<%= customer.id %>">
-      <%= render "public/relationships/follow", customer: customer %>
+      <% unless current_customer.id == customer.id %>
+        <%= render "public/relationships/follow", customer: customer %>
+      <% end %>
     </tr>
     <% if current_customer.id == customer.id %>
       <tr>

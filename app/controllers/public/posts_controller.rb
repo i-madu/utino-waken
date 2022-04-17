@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    tag_list = params[:post][:name].split(nil)
+    tag_list = params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました！"

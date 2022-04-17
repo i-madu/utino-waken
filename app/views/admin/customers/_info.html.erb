@@ -1,34 +1,17 @@
 <div class="col-md-3 card shadow-sm mt-5 profile_bar">
   <%= image_tag customer.get_profile_image(100,100), class:"card-img-top img-fluid" %>
   <div class="card-body">
-    <h6 class="card-title"><%= customer.login_name %></h6>
+    <h6 class="card-title"><%= link_to customer.login_name,admin_customer_path(customer) %></h6>
     <p class="card-text"><%= customer.introduction %></p>
   </div>
   <table class="table">
+    <tr>
       <th>フォロー：</th>
-      <th><%= link_to customer_followings_path(customer) do %>
-        <%= customer.followings.count %>
-      </th>
-      <% end %>
+      <th><%= customer.followings.count %></th>
     </tr>
     <tr>
       <th>フォロワー：</th>
-      <th><%= link_to customer_followers_path(customer) do %>
-        <%= customer.followers.count %>
-      </th>
-      <% end %>
-    </tr>
-    <% end %>
-    <tr>
-      <th><%= link_to "プロフィール",edit_customer_path(customer) %></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th><%= link_to "新規投稿",new_post_path %></th>
-      <th></th>
-    </tr>
-    <tr>
-      <th><%= link_to "退会について", unsubscribe_path(customer) %></th>
+      <th><%= customer.followers.count %></th>
     </tr>
   </table>
 </div>

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
     end
+    resources :tags do
+      get "posts", to: "posts#search"
+    end
     #退会確認用
     get "customer/:id/unsubscribe", to: "customers#unsubscribe", as:"unsubscribe"
     #退会削除用

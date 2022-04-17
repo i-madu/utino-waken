@@ -2,7 +2,6 @@
   <div class="row">
     <%= render "public/customers/info", customer: @customer %>
 
-
     <div class="card mb-3 col-md-6 shadow-sm mt-5 m-3">
       <%= image_tag @post.post_image, class:"card-img-top rounded mx-auto d-block post-image-show" %>
       <div class="card-header">
@@ -24,15 +23,13 @@
         <% end %>
       </div>
     </div>
-
+</div>
     <!--コメント-->
-    <div class="col-md-2 mt-5">
-      <div class="row comments">
+
+      <div class="row comments offset-3">
         <%= render "public/comments/comment_form", post: @post, comment: @comment %>
       </div>
-      <div class="row" id="comment-list">
+      <div class="row offset-3" id="comment-list">
         <%= render "public/comments/comment", post: @post %>
       </div>
-    </div>
-  </div>
 </div>

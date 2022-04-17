@@ -1,0 +1,6 @@
+<div class="shadow-sm mt-3">
+  <% tag_list.each do |list| %>
+    <%= link_to list.name,tag_posts_path(tag_id: list.id) %>
+    (<%= list.posts.count %>)
+  <% end %>
+</div>
