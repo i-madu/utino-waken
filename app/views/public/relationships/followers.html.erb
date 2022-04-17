@@ -1,14 +1,20 @@
 <div class="container">
   <div class="row">
     <%= render "public/customers/info", customer: @customer %>
-    <table class="col-md-8 table  shadow-sm m-3 mt-5">
-      <% @customers.each do |customer| %>
-      <tr>
-        <th><%= image_tag customer.get_profile_image(50,50) %></th>
-        <th><%= link_to customer.login_name, customer_path(customer) %></th>
-        <th class="follow_<%= @customer.id %>"><%= render "public/relationships/follow", customer: @customer %></th>
-      </tr>
-      <% end %>
-    </table>
+    <div class="col-md-7 shadow-sm m-3 mt-5">
+      <div class="row">
+        <% @customers.each do |customer| %>
+        <div class="col-md-4">
+          <%= image_tag customer.get_profile_image(50,50) %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to customer.login_name, customer_path(customer) %>
+        </div>
+        <div class="col-md-4" id="follow_<%= customer.id %>">
+          <%= render "public/relationships/follow", customer: customer %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

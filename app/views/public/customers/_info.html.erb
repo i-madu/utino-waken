@@ -5,10 +5,12 @@
     <p class="card-text"><%= customer.introduction %></p>
   </div>
   <table class="table">
-    <tr class="follow_<%= customer.id %>">
-      <% unless current_customer.id == customer.id %>
-        <%= render "public/relationships/follow", customer: customer %>
-      <% end %>
+    <tr>
+      <th id="follow_<%= customer.id %>">
+        <% unless current_customer.id == customer.id %>
+          <%= render "public/relationships/follow", customer: customer %>
+        <% end %>
+      </th>
     </tr>
     <% if current_customer.id == customer.id %>
       <tr>

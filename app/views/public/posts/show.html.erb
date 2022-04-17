@@ -23,13 +23,12 @@
         <% end %>
       </div>
     </div>
-</div>
+  </div>
     <!--コメント-->
-
-      <div class="row comments offset-3">
-        <%= render "public/comments/comment_form", post: @post, comment: @comment %>
-      </div>
-      <div class="row offset-3" id="comment-list">
-        <%= render "public/comments/comment", post: @post %>
-      </div>
+  <div class="row comments offset-3">
+    <%= render "public/comments/comment_form", post: @post, comment: @comment %>
+  </div>
+  <div class="row offset-3" id="comment-list">
+    <%= render "public/comments/comment", post: @post %>
+  </div>
 </div>
