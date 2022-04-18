@@ -58,6 +58,13 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @customer = current_customer
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
+  end
+
 
   def direct_type
     @post = Post.find(params[:id])

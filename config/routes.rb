@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :tags do
       get "posts", to: "posts#search"
     end
+    # get "search" => "searches#search"
+    
     #退会確認用
     get "customer/:id/unsubscribe", to: "customers#unsubscribe", as:"unsubscribe"
     #退会削除用
