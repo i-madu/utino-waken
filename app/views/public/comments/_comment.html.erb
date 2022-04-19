@@ -1,7 +1,7 @@
   <!--コメント一覧-->
-  <div class="row mt-3">
+  <!--<div class="row">-->
     <% post.comments.each do |comment| %>
-      <div class="col-md-8 card card-scroll">
+      <div class="card card-scroll">
         <div class="card-header">
           <p class="d-inline">
             <%= link_to customer_path(post) ,class:'customer_link' do %>
@@ -21,4 +21,4 @@
         </div>
       </div>
     <% end %>
-  </div>
+  <!--</div>-->

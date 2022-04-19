@@ -1,11 +1,14 @@
 class Public::SearchsController < ApplicationController
   
   
-  # def search
-  #   word = params[:word]
-  #   @customer = Customer.word(word)
-  #   @tag = Tag.word(word)
-  # end
+  def search
+    @search = params[:search]
+    if @search == "ログイン名"
+      @customers = Customer.looks(params[:search]), params[:word]
+    else
+      @tags = Tag.looks(params[:search]), params[:word]
+    end
+  end
   
   
 end

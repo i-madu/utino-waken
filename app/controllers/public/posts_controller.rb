@@ -4,7 +4,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @customer = current_customer
-    @posts = Post.all.order(created_at: :desc)
+    # @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
     @tag_list = Tag.all
   end
 
@@ -13,6 +14,7 @@ class Public::PostsController < ApplicationController
     @customer = @post.customer
     @comment = Comment.new
     @post_tags = @post.tags
+    @tag_list = Tag.all
   end
 
   def new
@@ -58,12 +60,20 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def search
+  def search_tag
     @customer = current_customer
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
+  
+  
+  # def search
+  #   redirect_to posts_path if params[:keyword] == ""
+  #   split_keywords = params[:keyword].split(/[[:blank:]]+/)
+  #   @posts = []
+  #   @result = Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
+  # end
 
 
   def direct_type

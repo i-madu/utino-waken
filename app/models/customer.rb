@@ -48,13 +48,15 @@ class Customer < ApplicationRecord
       customer.name = "guestcustomer"
     end
   end
-  
-  
+
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
-  
-  scope :by_name, -> (word){ where("login_name LIKE ?","%#{word}%")}
+
+  #検索
+  def self.looks(word)
+    @customer = Customer.where("login_name LIKE?","#{word}")
+  end
 
 end
