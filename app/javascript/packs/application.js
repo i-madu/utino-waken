@@ -13,6 +13,8 @@ import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all"
 import "../stylesheets/application"
 
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)
 
 Rails.start()
 Turbolinks.start()

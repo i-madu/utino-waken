@@ -8,7 +8,7 @@
        <div class="row">
         <% if @customer == [] %>
         <h4>検索結果はありません。</h4>
-        <%  %>
+        <% else %>
         <% @customer.each do |post| %>
           <div class="card shadow-sm m-3 mt-5 col-md-5">
             <div class="card-header float-end">
@@ -40,10 +40,10 @@
       <% end %>
       </div>
     </div>
-
-
-
-
-
+    
+    
+    
+    
+    
   </div>
 </div>
