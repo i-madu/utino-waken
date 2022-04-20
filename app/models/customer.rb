@@ -55,8 +55,8 @@ class Customer < ApplicationRecord
   end
 
   #検索
-  def self.looks(word)
-    @customer = Customer.where("login_name LIKE?","#{word}")
+  def self.search(search)
+    Customer.where("login_name LIKE ?","%#{search}%") if search != ""
   end
 
 end

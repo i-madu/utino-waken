@@ -1,5 +1,9 @@
 <div class="container">
   <div class="row">
+    <%= render "layouts/message" %>
+    <%= render "public/searchs/search_customer" %>
+  </div>
+  <div class="row">
     <div class="col-md-3 profile_bar">
       <%= render "public/customers/info", customer: @customer %>
       <%= render "public/tags/tag", tag_list: @tag_list %>

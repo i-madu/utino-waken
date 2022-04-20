@@ -1,16 +1,17 @@
-<div class="card shadow-sm mt-5">
+<div class="card shadow-sm mt-5 profile_bar">
   <%= image_tag customer.get_profile_image(100,100), class:"card-img-top img-fluid" %>
   <div class="card-body">
     <h6 class="card-title"><%= customer.login_name %></h6>
     <p class="card-text"><%= customer.introduction %></p>
   </div>
   <table class="table">
-    <tr>
-      <th id="follow_<%= customer.id %>">
+    <tr id="follow_<%= customer.id %>">
+      <th>
         <% unless current_customer.id == customer.id %>
           <%= render "public/relationships/follow", customer: customer %>
         <% end %>
       </th>
+      <th></th>
     </tr>
     <% if current_customer.id == customer.id %>
       <tr>

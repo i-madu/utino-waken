@@ -1,5 +1,9 @@
 <div class="container">
   <div class="row">
+    <%= render "layouts/message" %>
+    <%= render "public/searchs/search_customer" %>
+  </div>
+  <div class="row">
     <%= render "public/customers/info", customer: @customer %>
     <div class="col-md-7 shadow-sm m-3 mt-5">
       <div class="row">

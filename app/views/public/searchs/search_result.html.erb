@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
-    <%= render "layouts/message" %>
-    <%= render "public/searchs/search_customer" %>
-  </div>
-  <div class="row">
     <div class="col-md-3">
       <%= render "public/customers/info", customer: @customer %>
       <%= render "public/tags/tag", tag_list: @tag_list %>
     </div>
     <div class="col-md-9">
-      <div class="row">
-        <% @posts.each do |post| %>
+       <div class="row">
+        <% if @customer == [] %>
+        <h4>検索結果はありません。</h4>
+        <%  %>
+        <% @customer.each do |post| %>
           <div class="card shadow-sm m-3 mt-5 col-md-5">
             <div class="card-header float-end">
               <%= link_to customer_path(post.customer) ,class:'customer_link' do %>
@@ -38,7 +37,13 @@
             <% end %>
           </div>
         <% end %>
+      <% end %>
       </div>
     </div>
+
+
+
+
+
   </div>
 </div>

@@ -32,6 +32,13 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    redirect_to request.referer if params[:keyword] == ""
+    # split_keywords = params[:keyword].split(/[[:blank:]]+/)
+    # @customers = Customer.where("login_name like ?","%#{keyword}%")
+    @customer = Customer.search(params[:keyword])
+  end
+
 
 
   private

@@ -19,15 +19,19 @@ Rails.application.routes.draw do
       resource :relationships, only:[:create, :destroy]
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
+      collection do
+        get "search", to: "customers#search"
+      end
     end
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
+      collection do
+        get "search"
+      end
     end
     get "search_tag", to:"posts#search_tag"
-    
-    get "search" => "searches#search"
-    
+
     #退会確認用
     get "customer/:id/unsubscribe", to: "customers#unsubscribe", as:"unsubscribe"
     #退会削除用

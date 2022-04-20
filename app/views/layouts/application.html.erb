@@ -12,19 +12,7 @@
 
   <body>
     <%= render "layouts/header" %>
-    <div class="row">
-      <% if flash[:notice] %>
-      <div class="col-md-8 offset-md-2 text-success">
-        <%= notice %>
-      </div>
-      <% else %>
-      <div class="col-md-8 offset-md-2 text-danger">
-        <%= alert %>
-      </div>
-      <% end %>
-
-
-    </div>
+    
     <%= yield %>
   </body>
 </html>

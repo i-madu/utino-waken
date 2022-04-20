@@ -69,10 +69,15 @@ class Public::PostsController < ApplicationController
   
   
   # def search
-  #   redirect_to posts_path if params[:keyword] == ""
+  #   redirect_to request.referer if params[:keyword] == ""
   #   split_keywords = params[:keyword].split(/[[:blank:]]+/)
   #   @posts = []
-  #   @result = Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
+  #   split_keywords.each do |keyword|
+  #     next if keyword == ""
+  #     @posts += Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
+  #   # @result = Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
+  #   end
+  #   @posts.uniq!
   # end
 
 
