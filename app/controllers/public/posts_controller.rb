@@ -4,7 +4,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @customer = current_customer
-    # @posts = Post.all.order(created_at: :desc)
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
     @tag_list = Tag.all
   end
@@ -42,7 +41,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:name].split(nil)
+    tag_list = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.save_tag(tag_list)
       flash[:notice] = "投稿の更新が完了しました！"
@@ -66,8 +65,8 @@ class Public::PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
-  
-  
+
+
   # def search
   #   redirect_to request.referer if params[:keyword] == ""
   #   split_keywords = params[:keyword].split(/[[:blank:]]+/)

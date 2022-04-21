@@ -1,49 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= render "public/customers/info", customer: @customer %>
+      <%= render "public/customers/info", customer: current_customer %>
       <%= render "public/tags/tag", tag_list: @tag_list %>
     </div>
     <div class="col-md-9">
        <div class="row">
-        <% if @customer == [] %>
-        <h4>検索結果はありません。</h4>
+        <% if @customers == [] %>
+          <h4>検索結果はありません。</h4>
         <% else %>
-        <% @customer.each do |post| %>
-          <div class="card shadow-sm m-3 mt-5 col-md-5">
-            <div class="card-header float-end">
-              <%= link_to customer_path(post.customer) ,class:'customer_link' do %>
-                <%= image_tag post.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
-              <% end %>
-              <%= link_to customer_path(post.customer) do %>
-                <p class="d-inline"><%= post.customer.login_name %></p>
-              <% end %>
+          <% @customers.each do |customer| %>
+            <div class="card shadow-sm m-3 mt-5 col-md-5">
+              <div class="card-header float-end">
+                <%= link_to customer_path(customer) ,class:'customer_link' do %>
+                  <%= image_tag customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
+                <% end %>
+                <%= link_to customer_path(customer) do %>
+                  <p class="d-inline"><%= customer.login_name %></p>
+                <% end %>
+              </div>
             </div>
-          <% if post.post_image.attached? %>
-          　<%= link_to post_path(post) do %>
-              <%= image_tag post.post_image, class:"card-img-top post-image img-fluid" %>
           <% end %>
-            <div class="card-body">
-              <p class="card-text overflow-hidden post-index"><%= post.post %></p>
-
-              <!--タグ表示-->
-              <p class="card-text overflow-hidden post-index"><i class="fas fa-tag"></i><%= post.tags.map(&:name).join(',') %></p>
-
-            </div>
-            <div class="card-footer">
-              <p class="d-inline favorite_<%= post.id %>"><%= render "public/favorites/favorite", post: post  %></p>
-              <p class="card-text d-inline"><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>
-            </div>
-            <% end %>
-          </div>
         <% end %>
-      <% end %>
       </div>
     </div>
-    
-    
-    
-    
-    
   </div>
 </div>

@@ -4,8 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 offset-2">
-
-      <%= form_with model: @customer, local:true do |f| %>
+      <%= form_with model: @customer,url:admin_customer_path,method: :patch, local:true do |f| %>
       <div class="from-group">
         <%= f.label :profile_image, "プロフィール画像",class:"col-md-3" %>
         <%= f.file_field :profile_image, accept: "image/*" %>

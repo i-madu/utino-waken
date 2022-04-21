@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.all.order(created_at: :desc)
+    @posts = @customer.posts.all.order(created_at: :desc).page(params[:page]).per(10)
     @tag_list = Tag.all
   end
 
@@ -36,7 +36,8 @@ class Public::CustomersController < ApplicationController
     redirect_to request.referer if params[:keyword] == ""
     # split_keywords = params[:keyword].split(/[[:blank:]]+/)
     # @customers = Customer.where("login_name like ?","%#{keyword}%")
-    @customer = Customer.search(params[:keyword])
+    @customers = Customer.search(params[:keyword])
+    @tag_list = Tag.all
   end
 
 

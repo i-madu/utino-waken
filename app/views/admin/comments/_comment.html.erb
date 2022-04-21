@@ -1,0 +1,22 @@
+  <!--コメント一覧-->
+  <!--<div class="row">-->
+    <% post.comments.each do |comment| %>
+      <div class="card card-scroll">
+        <div class="card-header">
+          <p class="d-inline">
+            <%= link_to customer_path(post) ,class:'customer_link' do %>
+              <%= image_tag comment.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
+            <% end %>
+          </p>
+          <p class="d-inline"><%= comment.customer.login_name %></p>
+        </div>
+        <div class="card-body">
+          <div class="card-text"><%= comment.comment %></div>
+        </div>
+        <div class="card-footer">
+          <%= link_to "削除する",post_comment_path(post, comment), method: :delete, remote: true, class:"card-text d-inline" %>
+          <p class="card-text d-inline"><small class="text-muted"><%= comment.created_at.strftime("%Y/%m/%d") %></small></p>
+        </div>
+      </div>
+    <% end %>
+  <!--</div>-->
