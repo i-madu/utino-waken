@@ -1,48 +1,56 @@
 <div class="container">
-  <div class="row mx-auto">
-      <h3 class="col-md-4 my-5">会員詳細</h3>
+  <div class="row">
+    <%= render "layouts/message" %>
+    <%= render "public/searchs/search_customer" %>
+  </div>
+  <div class="row">
+      <h3 class="col-md-3 m-2 offset-md-1 bg-light text-center">会員詳細</h3>
   </div>
 
   <div class="row">
-    <table class="table col-md-8 mt-3 mx-auto">
-        <tr>
-          <th>会員ID</th>
-          <td><%= @customer.id %></td>
-        </tr>
-        <tr>
-          <th>氏名</th>
-          <td><%= @customer.name %>
-          </td>
-        </tr>
-        <tr>
-          <th>ログイン名</th>
-          <td>
-            <%= link_to admin_customer_posts_path(@customer) do %>
-              <%= @customer.login_name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
-        </tr>
+    <div class="col-md-5 card shadow-lg mx-auto mb-3">
+      <%= image_tag @customer.get_profile_image(200,200), class:"img-fluid card-img-top profile-image" %>
+      <div class="card-body">
+        <table class="table">
+            <tr>
+              <th>会員ID</th>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <th>氏名</th>
+              <td><%= @customer.name %>
+              </td>
+            </tr>
+            <tr>
+              <th>ログイン名</th>
+              <td>
+                <%= link_to admin_customer_posts_path(@customer) do %>
+                  <%= @customer.login_name %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+                <td><%= @customer.email %></td>
+            </tr>
 
-        <tr>
-          <th>ステータス</th>
-          <% if @customer.is_deleted == false %>
-            <td>有効会員</td>
-          <% else %>
-            <td>退会済み</td>
+            <tr>
+              <th>ステータス</th>
+              <% if @customer.is_deleted == false %>
+                <td>有効会員</td>
+              <% else %>
+                <td>退会済み</td>
+              <% end %>
+            </tr>
+        </table>
+      </div>
+      <div class="row-8 offset-md-1">
+        <div class="col-md-3 mx-auto mb-3">
+          <%= link_to edit_admin_customer_path do %>
+            <button class="btn btn-success mx-auto">編集</button>
           <% end %>
-        </tr>
-    </table>
-
-  </div>
-  <div class="row-8 offset-md-1 mt-3">
-    <div class="col-md-3 mx-auto">
-      <%= link_to edit_admin_customer_path do %>
-        <button class="btn btn-success mx-auto">編集</button>
-      <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

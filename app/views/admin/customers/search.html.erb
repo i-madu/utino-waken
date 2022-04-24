@@ -4,11 +4,13 @@
     <%= render "admin/searchs/search_customer" %>
   </div>
   <div class="row">
-      <h3 class="col-md-3 my-3 offset-md-1 bg-light text-center">会員一覧</h3>
-  </div>
-
-  <div class="row">
-    <% @customers.each do |customer| %>
+    <div class="col-md-11">
+      <% if @customers == [] %>
+        <div class="col-md-5 mt-5">
+          <h5>検索結果はありません。</h5>
+        </div>
+      <% else %>
+        <% @customers.each do |customer| %>
       <div class="card shadow-sm mt-5 col-md-4">
         <%= image_tag customer.get_profile_image(300,300), class:"img-fluid card-img-top profile-image" %>
         <div class="card-body">
@@ -41,5 +43,7 @@
         </div>
       </div>
     <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
