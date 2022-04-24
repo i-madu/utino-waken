@@ -15,8 +15,6 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました。"
-    redirect_to posts_path
+    redirect_to admin_customer_posts_path(@post.customer)
   end
-  
-
 end

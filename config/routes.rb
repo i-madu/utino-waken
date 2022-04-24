@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     post "customers/guest_sign_in", to: "customers/sessions#guest_sign_in"
   end
 
-
-
   scope module: :public do
     root "homes#top"
     resources :customers, only:[:show,:edit,:update] do
@@ -26,9 +24,6 @@ Rails.application.routes.draw do
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]
-      collection do
-        get "search"
-      end
     end
     get "search_tag", to:"posts#search_tag"
 
@@ -46,11 +41,13 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update] do
+      collection do
+        get "search", to: "customers#search"
+      end
       resources :posts, only:[:index, :show, :destroy] do
-        resources :comments, only:[:index, :destroy]
+        resources :comments, only:[:destroy]
       end
     end
-    # get "posts/:id", to: "posts#index", as: "posts"
   end
 
 

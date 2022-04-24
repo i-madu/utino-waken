@@ -1,9 +1,11 @@
 <% if flash[:notice] %>
-  <div class="col-md-6 offset-md-2 text-success mt-3">
+  <div class="col-md-3 offset-md-2 text-success mt-3 notice">
     <%= notice %>
   </div>
-<% else %>
-  <div class="col-md-6 offset-md-2 text-danger mt-3">
+<% elsif flash[:alert] %>
+  <div class="col-md-3 offset-md-2 text-white mt-3 alert">
     <%= alert %>
   </div>
+<% else %>
+  <div class="col-md-6 offset-md-2"></div>
 <% end %>
