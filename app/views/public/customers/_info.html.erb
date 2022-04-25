@@ -8,7 +8,7 @@
   <table class="table">
     <tr id="follow_<%= customer.id %>">
       <% unless current_customer.id == customer.id %>
-      <th><%= render "public/relationships/follow", customer: customer %></th>
+      <%= render "public/relationships/follow", customer: customer %>
       <th></th>
     </tr>
     <% end %>

@@ -8,17 +8,35 @@
     <div class="col-md-7 shadow-sm m-3 mt-5">
       <div class="row">
         <% @customers.each do |customer| %>
-        <div class="col-md-4">
-          <%= image_tag customer.get_profile_image(50,50) %>
-        </div>
-        <div class="col-md-4">
-          <%= link_to customer.login_name, customer_path(customer) %>
-        </div>
-        <div class="col-md-4" id="follow_<%= customer.id %>">
-          <%= render "public/relationships/follow", customer: customer %>
-        </div>
+          <div class="card shadow-sm col-md-6">
+            <%= link_to customer_path(customer) do %>
+              <%= image_tag customer.get_profile_image(250,250), class:"img-fluid card-img-top profile-image" %>
+            <% end %>
+            <div class="card-body">
+              <table class="table">
+                <tr class="col-md-4" id="follow_<%= customer.id %>">
+                  <%= render "public/relationships/follow", customer: customer %>
+                </tr>
+                <tr>
+                  <td><%= customer.login_name %></td>
+                </tr>
+                <tr>
+                  <td><%= customer.introduction %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+

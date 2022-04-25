@@ -12,25 +12,32 @@
     <div class="card mb-3 col-md-6 shadow-lg mt-5 m-3">
       <%= image_tag @post.post_image, class:"card-img-top rounded mx-auto d-block post-image-show" %>
       <div class="card-body">
-        <p class="card-text my-3"><%= @post.post %></p>
+        <p class="card-text my-3"><%= safe_join(@post.post.split("\n"),tag(:br)) %></p>
         <% @post_tags.each do |tag| %>
           <p class="card-text d-inline mr-3"><i class="fas fa-tag"></i><%= link_to tag.name,search_tag_path(tag_id: tag.id) %></p>
         <% end %>
       </div>
-      <div class="card-footer">
-        <%= image_tag @customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
-        <p class="d-inline"><%= @post.customer.login_name %></p>|
-        <p class="d-inline favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post  %></p>|
-        <P class="d-inline"><i class="fa fa-comment-dots"></i><%= @post.comments.count %></P>|
-        <p class="card-text d-inline"><i class="fa fa-calendar"></i><small class="text-muted"><%= @post.created_at.strftime("%Y/%m/%d") %></small></p>|
-        <% if current_customer == @post.customer %>
-          <%= link_to "編集",edit_post_path, class:"d-inline" %>|
-          <%= link_to "削除",post_path(@post),method: :delete, "data-confirm" => "本当に削除しますか？", class:"d-inline" %>|
-        <% end %>
+      <div class="card-footer row">
+        <div class="col-3">
+          <%= image_tag @customer.get_profile_image(100,100), class:"img-fluid d-inline" %>
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <p class="d-inline"><%= @post.customer.login_name %></p>
+          </div>
+          <div class="row">
+            <p class="d-inline favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post  %></p>|
+            <P class="d-inline"><i class="fa fa-comment-dots"></i><%= @post.comments.count %></P>|
+            <p class="card-text d-inline"><i class="fa fa-calendar"></i><small class="text-muted"><%= @post.created_at.strftime("%Y/%m/%d") %></small></p>|
+            <% if current_customer == @post.customer %>
+              <%= link_to "編集",edit_post_path, class:"d-inline btn btn-edit" %>
+              <%= link_to "削除",post_path(@post),method: :delete, "data-confirm" => "本当に削除しますか？", class:"d-inline btn btn-destroy" %>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
-    <!--コメント-->
+
   <div class="row mt-5 offset-3">
     <h5>コメント</h5>
   </div>

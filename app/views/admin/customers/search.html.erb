@@ -11,38 +11,38 @@
         </div>
       <% else %>
         <% @customers.each do |customer| %>
-      <div class="card shadow-sm mt-5 col-md-4">
-        <%= image_tag customer.get_profile_image(300,300), class:"img-fluid card-img-top profile-image" %>
-        <div class="card-body">
-          <table class="table">
-            <tr>
-              <th>会員ID</th>
-              <td><%= customer.id %></td>
-            </tr>
-            <tr>
-              <th>氏名</th>
-              <td><%= customer.name %></td>
-            </tr>
-            <tr>
-              <th>ログイン名</th>
-              <td><%= customer.login_name %></td>
-            </tr>
-            <tr>
-              <th>ステータス</th>
-              <% if customer.is_deleted == false %>
-                <td>有効</td>
-              <% else %>
-                <td>退会済み</td>
-              <% end %>
-            </tr>
-            <tr>
-              <td><%= link_to "会員詳細", admin_customer_path(customer), class:"btn btn-color" %></td>
-              <td><%= link_to "投稿一覧", admin_customer_posts_path(customer), class:"btn btn-color-posts" %></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    <% end %>
+          <div class="card shadow-sm mt-5 col-md-4">
+            <%= image_tag customer.get_profile_image(300,300), class:"img-fluid card-img-top profile-image" %>
+            <div class="card-body">
+              <table class="table">
+                <tr>
+                  <th>会員ID</th>
+                  <td><%= customer.id %></td>
+                </tr>
+                <tr>
+                  <th>氏名</th>
+                  <td><%= customer.name %></td>
+                </tr>
+                <tr>
+                  <th>ログイン名</th>
+                  <td><%= customer.login_name %></td>
+                </tr>
+                <tr>
+                  <th>ステータス</th>
+                  <% if customer.is_deleted == false %>
+                    <td>有効</td>
+                  <% else %>
+                    <td>退会済み</td>
+                  <% end %>
+                </tr>
+                <tr>
+                  <td><%= link_to "会員詳細", admin_customer_path(customer), class:"btn btn-color" %></td>
+                  <td><%= link_to "投稿一覧", admin_customer_posts_path(customer), class:"btn btn-color-posts" %></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

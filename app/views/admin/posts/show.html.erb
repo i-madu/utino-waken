@@ -9,7 +9,8 @@
         <p class="d-inline"><%= @post.customer.login_name %></p>
       </div>
       <div class="card-body">
-        <p class="card-text my-3"><%= @post.post %></p>
+        <p class="card-text my-3"><%= safe_join(@post.post.split("\n"),tag(:br)) %></p>
+      
         <% @post_tags.each do |tag| %>
           <p class="card-text"><i class="fas fa-tag"></i><%= tag.name %></p>
         <% end %>
