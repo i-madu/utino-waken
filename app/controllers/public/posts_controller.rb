@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_customer!
   before_action :direct_type, only: [:edit]
 
   def index
@@ -66,19 +65,11 @@ class Public::PostsController < ApplicationController
     @posts = @tag.posts.all
   end
 
+  private
 
-  # def search
-  #   redirect_to request.referer if params[:keyword] == ""
-  #   split_keywords = params[:keyword].split(/[[:blank:]]+/)
-  #   @posts = []
-  #   split_keywords.each do |keyword|
-  #     next if keyword == ""
-  #     @posts += Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
-  #   # @result = Post.left_joins(:tags).where('posts.post like ?',"%#{keyword}%").or(Tag.where("tags.name like ?","%#{keyword}%"))
-  #   end
-  #   @posts.uniq!
-  # end
-
+  def post_params
+    params.require(:post).permit(:post,:post_image)
+  end
 
   def direct_type
     @post = Post.find(params[:id])
@@ -86,14 +77,4 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-
-
-
-  private
-
-  def post_params
-    params.require(:post).permit(:post,:post_image)
-  end
-
-
 end

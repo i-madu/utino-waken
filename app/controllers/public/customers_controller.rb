@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :direct_type, only: [:edit, :unsubscribe]
+  
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.all.order(created_at: :desc).page(params[:page]).per(10)
@@ -40,12 +42,17 @@ class Public::CustomersController < ApplicationController
     @tag_list = Tag.all
   end
 
-
-
   private
 
   def customer_params
     params.require(:customer).permit(:name, :login_name, :introduction, :profile_image)
+  end
+  
+  def direct_type
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to request.referer
+    end
   end
 
 end

@@ -1,6 +1,4 @@
 class Public::SearchsController < ApplicationController
-  
-  
   def search
     @search = params[:search]
     if @search == "ログイン名"
