@@ -1,20 +1,24 @@
 <div class="container seeyou-image">
   <div class="row">
     <%= render "layouts/message" %>
-    <%= render "public/searchs/search_customer" %>
   </div>
+
   <div class="row">
-    <h5 class="col-md-4 my-5">退会手続き</h5>
-  </div>
-  <div class="row-10">
-    <p class="col-md-8 shadow-sm m-3 mt-5 mx-auto">
-      退会手続きをされますと、今までご利用されていたサービスがご利用いただけなくなります。 <br>
-      再度ご利用いただく場合は新規登録のお手続きが必須となります。<br>
-      退会してもよろしいですか？
-    </p>
-  </div>
-  <div class="row">
-    <%= link_to "退会する", withdrawal_path(@customer), method: :patch, class:"col-md-3" %>
-    <%= link_to "退会しない",posts_path, class:"col-md-3" %>
+    <div class="col-4 shadow-sm offset-md-8 text-light seeyou-text">
+      <div class="row">
+        <h5 class="col-md-12 my-5">退会手続き</h5>
+      </div>
+      <div class="row">
+        <p class="col-md-12 m-3 mt-5 mx-auto">
+          退会手続きをされますと、<br>今までご利用されていたサービスが<br>ご利用いただけなくなります。<br>
+          再度ご利用いただく場合、<br>新規登録のお手続きが必須となります。<br>
+          本当に退会してもよろしいですか？
+        </p>
+      </div>
+      <div class="row mt-5">
+        <%= link_to "退会する", withdrawal_path(@customer), method: :patch, class:"col-md-3 mx-4 btn btn-withdrawal text-light" %>
+        <%= link_to "退会しない",posts_path, class:"col-md-4 btn btn-no-withdrawal text-light" %>
+      </div>
+    </div>
   </div>
 </div>

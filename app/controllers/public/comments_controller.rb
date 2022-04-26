@@ -3,16 +3,12 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = current_customer.comments.new(comment_params)
     comment.post_id = @post.id
-    if  comment.save
-      flash[:notice] = "コメントを投稿しました。"
-    else
-      flash.now[:alert] = "フォーム内容が空白のままコメントを投稿することはできません。"
-    end
+    comment.save
   end
 
   def destroy
     @post = Post.find(params[:post_id])
-    Comment.find_by(params[:id]).destroy
+    Comment.find(params[:id]).destroy
   end
 
 

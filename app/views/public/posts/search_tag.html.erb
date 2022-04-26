@@ -12,28 +12,33 @@
       <div class="row">
         <% @posts.each do |post| %>
           <div class="card shadow-sm m-3 mt-5 col-md-5">
-            <div class="card-header float-end">
-              <%= link_to customer_path(post.customer) ,class:'customer_link' do %>
-                <%= image_tag post.customer.get_profile_image(50,50), class:"img-fluid d-inline" %>
-              <% end %>
-              <%= link_to customer_path(post.customer) do %>
-                <p class="d-inline"><%= post.customer.login_name %></p>
-              <% end %>
-            </div>
-          <% if post.post_image.attached? %>
-          　<%= link_to post_path(post) do %>
-              <%= image_tag post.post_image, class:"card-img-top post-image img-fluid" %>
-          <% end %>
+            <% if post.post_image.attached? %>
+            　<%= link_to post_path(post) do %>
+                <%= image_tag post.post_image, class:"card-img-top post-image img-fluid" %>
+            <% end %>
             <div class="card-body">
               <p class="card-text overflow-hidden post-index"><%= post.post %></p>
-
               <!--タグ表示-->
               <p class="card-text overflow-hidden post-index"><i class="fas fa-tag"></i><%= post.tags.map(&:name).join(',') %></p>
-
             </div>
-            <div class="card-footer">
-              <p class="d-inline favorite_<%= post.id %>"><%= render "public/favorites/favorite", post: post  %></p>
-              <p class="card-text d-inline"><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>
+            <div class="card-footer row">
+              <div class="col-5">
+                <%= link_to customer_path(post.customer) ,class:'customer_link' do %>
+                  <%= image_tag post.customer.get_profile_image(100,80), class:"img-fluid d-inline" %>
+                <% end %>
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <%= link_to customer_path(post.customer) do %>
+                    <p class="d-inline"><%= post.customer.login_name %></p>
+                  <% end %>
+                </div>
+                <div class="row">
+                  <p class="d-inline favorite_<%= post.id %>"><%= render "public/favorites/favorite", post: post  %></p>|
+                  <P class="d-inline"><i class="fa fa-comment-dots"></i><%= post.comments.count %></P>|
+                  <p class="card-text d-inline"><i class="fa fa-calendar"></i><small class="text-muted"><%= post.created_at.strftime("%Y/%m/%d") %></small></p>|
+                </div>
+              </div>
             </div>
             <% end %>
           </div>

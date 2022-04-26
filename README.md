@@ -27,5 +27,7 @@ https://docs.google.com/spreadsheets/d/18VpXWwzrQAMR7Xhhl78QKalZD0XqlWbadkFz45TP
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+ICOOON MONO: https://icooon-mono.com/12783-%E8%82%89%E7%90%83%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B33/
+写真AC: https://www.photo-ac.com/main/detail/3027637
+PIXABAY: https://pixabay.com/ja/
+Canva: https://www.canva.com/
