@@ -1,4 +1,6 @@
 class Public::SearchsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def search
     @search = params[:search]
     if @search == "ログイン名"

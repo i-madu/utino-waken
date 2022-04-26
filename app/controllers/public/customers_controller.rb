@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :direct_type, only: [:edit, :unsubscribe]
+  before_action :authenticate_customer!
   
   def show
     @customer = Customer.find(params[:id])

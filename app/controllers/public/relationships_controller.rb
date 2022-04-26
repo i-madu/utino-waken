@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-
+  before_action :authenticate_customer!
   #フォローした時
   def create
     follow = current_customer.follow(params[:customer_id])
