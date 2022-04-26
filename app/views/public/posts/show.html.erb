@@ -33,6 +33,7 @@
               <%= link_to "編集",edit_post_path, class:"d-inline btn btn-edit" %>
               <%= link_to "削除",post_path(@post),method: :delete, "data-confirm" => "本当に削除しますか？", class:"d-inline btn btn-destroy" %>
             <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -41,12 +42,12 @@
   <div class="row mt-5 offset-3">
     <h5>コメント</h5>
   </div>
-  <div class="row mt-5 offset-3">
+  <div class="row mt-5">
+    <div class="comments col-3">
+      <%= render "public/comments/comment_form", post: @post, comment: @comment %>
+    </div>
     <div class="col-7" id="comment-list">
       <%= render "public/comments/comment", post: @post %>
-    </div>
-    <div class="comments col-4">
-      <%= render "public/comments/comment_form", post: @post, comment: @comment %>
     </div>
   </div>
 </div>

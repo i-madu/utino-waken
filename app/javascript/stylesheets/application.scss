@@ -9,8 +9,6 @@
   background-position: center;
 }
 
-
-
 body {
   cursor: url("../images/nikukyuu.png"),auto;
 }
@@ -19,8 +17,20 @@ main {
   background-image: url("../images/3027637_m.jpg");
   background-size: cover;
   width: 100%;
-  min-height: 100vh;
   background-position: center;
+}
+
+.bg-color {
+  background-color: #ffffff;
+  min-height: 90vh;
+}
+
+.m-left {
+  margin-left: 113px;
+}
+
+.m-top {
+  margin-top: 9rem;
 }
 
 .notice {

@@ -14,15 +14,16 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
+    flash[:notice] = "会員情報を変更しました。"
     redirect_to admin_customer_path(@customer)
   end
-  
+
   def search
     redirect_to request.referer if params[:keyword] == ""
     @customers = Customer.search(params[:keyword])
     @tag_list = Tag.all
   end
-  
+
 
   private
   def customer_params
