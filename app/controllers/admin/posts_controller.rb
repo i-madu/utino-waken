@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_admin!
   def index
     @customer = Customer.find(params[:customer_id])
     @posts = @customer.posts.page(params[:page]).per(10)

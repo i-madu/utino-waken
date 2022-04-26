@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_admin!
   def destroy
     @post = Post.find(params[:post_id])
     Comment.find_by(params[:id]).destroy
