@@ -14,9 +14,11 @@
             <% end %>
             <div class="card-body">
               <table class="table">
-                <tr class="col-md-4" id="follow_<%= customer.id %>">
-                  <%= render "public/relationships/follow", customer: customer %>
-                </tr>
+                <% if current_customer == @customer %>
+                  <tr class="col-md-4" id="follow_<%= customer.id %>">
+                    <%= render "public/relationships/follow", customer: customer %>
+                  </tr>
+                <% end %>
                 <tr>
                   <td><%= customer.login_name %></td>
                 </tr>
