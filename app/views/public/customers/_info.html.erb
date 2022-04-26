@@ -5,40 +5,42 @@
     <p><strong>自己紹介</strong></p>
     <p class="card-text"><%= customer.introduction %></p>
   </div>
-  <table class="table">
-    <tr id="follow_<%= customer.id %>">
-      <% unless current_customer.id == customer.id %>
-      <%= render "public/relationships/follow", customer: customer %>
-      <th></th>
-    </tr>
-    <% end %>
-    <tr>
-      <th>フォロー　　：</th>
-      <td><%= link_to customer_followings_path(customer) do %>
-        <%= customer.followings.count %>
-      </td>
+  <% unless current_customer.name == "guestcustomer" %>
+    <table class="table">
+      <tr id="follow_<%= customer.id %>">
+        <% unless current_customer.id == customer.id %>
+        <%= render "public/relationships/follow", customer: customer %>
+        <th></th>
+      </tr>
       <% end %>
-    </tr>
-    <tr>
-      <th>フォロワー　：</th>
-      <td><%= link_to customer_followers_path(customer) do %>
-        <%= customer.followers.count %>
-      </td>
+      <tr>
+        <th>フォロー　　：</th>
+        <td><%= link_to customer_followings_path(customer) do %>
+          <%= customer.followings.count %>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>フォロワー　：</th>
+        <td><%= link_to customer_followers_path(customer) do %>
+          <%= customer.followers.count %>
+        </td>
+        <% end %>
+      </tr>
+      <% if current_customer.id == customer.id %>
+        <tr>
+          <th><%= link_to "プロフィール",edit_customer_path(customer) %></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th><%= link_to "新規投稿",new_post_path %></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th><%= link_to "退会について", unsubscribe_path(customer) %></th>
+          <th></th>
+        </tr>
       <% end %>
-    </tr>
-    <% if current_customer.id == customer.id %>
-      <tr>
-        <th><%= link_to "プロフィール",edit_customer_path(customer) %></th>
-        <th></th>
-      </tr>
-      <tr>
-        <th><%= link_to "新規投稿",new_post_path %></th>
-        <th></th>
-      </tr>
-      <tr>
-        <th><%= link_to "退会について", unsubscribe_path(customer) %></th>
-        <th></th>
-      </tr>
-    <% end %>
-  </table>
+    </table>
+  <% end %>
 </div>
