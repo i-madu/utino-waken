@@ -5,7 +5,7 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <%= render "public/customers/info", customer: @customer %>
+      <%= render "public/customers/info", customer: current_customer %>
       <%= render "public/tags/tag", tag_list: @tag_list %>
     </div>
     <div class="col-md-9">
@@ -19,7 +19,9 @@
             <div class="card-body">
               <p class="card-text overflow-hidden post-index"><%= post.post %></p>
               <!--タグ表示-->
-              <p class="card-text overflow-hidden post-index"><i class="fas fa-tag"></i><%= post.tags.map(&:name).join(',') %></p>
+              <% post.tags.each do |tag| %>
+                <p class="card-text d-inline"><i class="fas fa-tag"></i><%= link_to tag.name,search_tag_path(tag_id: tag.id) %></p>
+              <% end %>
             </div>
             <div class="card-footer row">
               <div class="col-5">
