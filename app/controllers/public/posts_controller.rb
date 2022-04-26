@@ -63,7 +63,6 @@ class Public::PostsController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
-    # @post_tags = @post.tags
   end
 
   private
