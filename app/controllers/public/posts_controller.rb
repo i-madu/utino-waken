@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
-    tag_list = params[:post][:name].split(',')
+    tag_list = params[:post][:name].split('、')
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました！"
@@ -36,12 +36,12 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:name).join('、')
   end
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:name].split(',')
+    tag_list = params[:post][:name].split('、')
     if @post.update(post_params)
       @post.save_tag(tag_list)
       flash[:notice] = "投稿の更新が完了しました！"
