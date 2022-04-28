@@ -1,1 +1,2 @@
 $("#follow_<%= @customer.id %>").html("<%= j(render "public/relationships/follow", customer: @customer) %>");
+$("#followers-count_<%= @customer.id %>").html("<%= j(render "public/relationships/followers_count", customer: @customer) %>")

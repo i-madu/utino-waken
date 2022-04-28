@@ -14,17 +14,15 @@
       <% end %>
       <tr>
         <th>フォロー　　：</th>
-        <td><%= link_to customer_followings_path(customer) do %>
-          <%= customer.followings.count %>
+        <td id="followings-count_<%= customer.id %>">
+          <%= render "public/relationships/followings_count", customer: customer %>
         </td>
-        <% end %>
       </tr>
       <tr>
         <th>フォロワー　：</th>
-        <td><%= link_to customer_followers_path(customer) do %>
-          <%= customer.followers.count %>
+        <td id="followers-count_<%= customer.id %>">
+          <%= render "public/relationships/followers_count", customer: customer %>
         </td>
-        <% end %>
       </tr>
       <% if current_customer.id == customer.id %>
         <tr>
