@@ -10,7 +10,6 @@
       <tr id="follow_<%= customer.id %>">
         <% unless current_customer.id == customer.id %>
         <%= render "public/relationships/follow", customer: customer %>
-        <th></th>
       </tr>
       <% end %>
       <tr>

@@ -1,5 +1,7 @@
 <% if current_customer.followings?(customer) %>
   <td><strong><%= link_to "フォロー中", customer_relationships_path(customer), method: :delete, remote: true %></strong></td>
+   <th></th>
 <% else %>
   <td><strong><%= link_to "フォローする", customer_relationships_path(customer), method: :post, remote: true %></strong></td>
+   <th></th>
 <% end %>
