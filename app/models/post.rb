@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_one_attached :post_image
 
   validates :post, presence: true, length: { maximum: 300 }
+  validates :post_image, presence: true
 
 
   #いいね機能
