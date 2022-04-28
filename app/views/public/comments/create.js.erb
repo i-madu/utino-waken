@@ -1,3 +1,5 @@
 $("#comment-list").html("<%= j(render 'public/comments/comment', post: @post) %>");
 <!--フォームを送信したあとにフォームの値を空にします-->
 $("textarea").val('');
+<!--コメント数-->
+$("#commet-count").html("<%= j(render "public/comments/comment_count", post: @post) %>")

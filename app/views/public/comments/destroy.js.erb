@@ -1,1 +1,3 @@
 $("#comment-list").html("<%= j(render 'public/comments/comment', post: @post) %>");
+<!--コメント数-->
+$("#commet-count").html("<%= j(render "public/comments/comment_count", post: @post) %>")
