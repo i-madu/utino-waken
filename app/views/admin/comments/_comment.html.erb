@@ -14,7 +14,7 @@
           <div class="card-text"><%= comment.comment %></div>
         </div>
         <div class="card-footer">
-          <%= link_to "削除する",admin_customer_post_comment_path(post.customer, post, comment), method: :delete, remote: true, class:"card-text d-inline" %>
+          <%= link_to "削除",admin_customer_post_comment_path(post.customer, post, comment), method: :delete, remote: true, class:"card-text d-inline btn admin-btn-destroy" %>
           <p class="card-text d-inline"><small class="text-muted"><%= comment.created_at.strftime("%Y/%m/%d") %></small></p>
         </div>
       </div>
