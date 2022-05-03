@@ -19,13 +19,13 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-  
+
   def in_unsubscribe_check
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
       flash.now[:alert] = "退会済みのアカウントです。再度新規登録をしてください。"
-      redirect_to new_customer_registration
+      redirect_to new_customer_registration_path
     else
       flash[:notice] = "こんにちは、#{@customer.name}さん！"
     end
