@@ -20,6 +20,12 @@ Rails.application.routes.draw do
       collection do
         get "search", to: "customers#search"
       end
+      member do
+        #退会確認用
+        get "unsubscribe"
+        #退会削除用
+        patch "withdrawal"
+      end
     end
     resources :posts,only:[:index,:show, :new, :create, :edit, :update, :destroy] do
       resources :comments, only:[:create, :destroy]
@@ -27,10 +33,7 @@ Rails.application.routes.draw do
     end
     get "search_tag", to:"posts#search_tag"
 
-    #退会確認用
-    get "customer/:id/unsubscribe", to: "customers#unsubscribe", as:"unsubscribe"
-    #退会削除用
-    patch "customer/:id/withdrawal", to: "customers#withdrawal", as:"withdrawal"
+
 
   end
 

@@ -18,7 +18,7 @@
           <% @customers.each do |customer| %>
             <div class="card shadow-sm m-3 mt-5 col-md-5">
               <%= link_to customer_path(customer) ,class:'customer_link' do %>
-                <%= image_tag customer.get_profile_image(100,100), class:"img-fluid card-img-top" %>
+                <%= image_tag customer.get_profile_image(500,500), class:"img-fluid card-img-top" %>
               <% end %>
               <div class="card-body">
                 <p><strong>ログイン名　<%= customer.login_name %></strong></p>

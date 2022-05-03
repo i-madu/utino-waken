@@ -16,7 +16,7 @@
         </p>
       </div>
       <div class="row mt-5">
-        <%= link_to "退会する", withdrawal_path(@customer), method: :patch, "data-confirm" => "本当に退会しますか？", class:"col-md-3 mx-4 btn btn-withdrawal text-light" %>
+        <%= link_to "退会する", withdrawal_customer_path(@customer), method: :patch, "data-confirm" => "本当に退会しますか？", class:"col-md-3 mx-4 btn btn-withdrawal text-light" %>
         <%= link_to "退会しない",posts_path, class:"col-md-4 btn btn-no-withdrawal text-light" %>
       </div>
     </div>
