@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :direct_type, only: [:edit, :unsubscribe]
+  before_action :direct_type, only: [:edit, :unsubscribe, :update, :withdrawal]
   before_action :authenticate_customer!
 
   def show

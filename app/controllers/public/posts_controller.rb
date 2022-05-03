@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :direct_type, only: [:edit]
+  before_action :direct_type, only: [:edit, :update, :destroy]
   before_action :authenticate_customer!
 
   def index
