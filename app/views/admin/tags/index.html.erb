@@ -1,0 +1,21 @@
+<div class="container admin-tags-bg">
+  <div class="row">
+    <%= render "layouts/message" %>
+  </div>
+  <div class="row">
+      <h3 class="col-md-3 m-2 offset-md-1 bg-light text-center">タグ一覧</h3>
+  </div>
+  <div class="row ">
+    <div class="col-6 mx-auto">
+      <table class="table admin-tags">
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.name %></td>
+            <td><%= link_to "削除", admin_tag_path(tag),method: :delete, "date-confirm" => "本当に削除しますか？", class:"d-inline btn admin-btn-destroy" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= paginate @tags %>
+    </div>
+  </div>
+</div>

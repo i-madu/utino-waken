@@ -51,6 +51,7 @@ Rails.application.routes.draw do
         resources :comments, only:[:destroy]
       end
     end
+    resources :tags, only:[:index, :destroy]
   end
 
 
